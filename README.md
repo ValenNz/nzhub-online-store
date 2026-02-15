@@ -1,74 +1,196 @@
-# <p align="center">The Nz Hub E-commerce</p>
+# 🥝 The NZ Hub — E‑commerce (Laravel 10 + Blade)
 
-Proyek ini adalah contoh aplikasi e-commerce menggunakan framework Laravel, yang bertujuan untuk menyediakan platform belanja online yang responsif dan mudah digunakan. Dengan fokus pada produk-produk dari Selandia Baru, The Nz Hub E-commerce memberikan pengalaman berbelanja yang memikat dengan berbagai fitur menarik.
+Aplikasi e‑commerce sederhana berbasis **Laravel 10** dengan tampilan **Blade**. Proyek ini menampilkan konsep toko online yang menjual produk bertema Selandia Baru (NZ), dilengkapi fitur katalog, keranjang, checkout, dan panel admin.
 
-## Fitur Utama
+> Cocok sebagai bahan pembelajaran Laravel full‑stack: routing, MVC, relasi database, autentikasi, dan manajemen transaksi.
 
-- **Katalog Produk**: Tampilkan berbagai produk dari Selandia Baru dengan detail produk, gambar, dan informasi terkait.
-- **Keranjang Belanja**: Pengguna dapat menambahkan produk ke keranjang belanja, melihat ringkasan pesanan, dan melakukan check-out dengan mudah.
-- **Opsi Pembayaran**: Dukung berbagai opsi pembayaran, termasuk kartu kredit, transfer bank, dan opsi pembayaran digital.
-- **Pelacakan Pesanan**: Pengguna dapat melacak status pesanan mereka dan menerima pembaruan secara real-time.
-- **Manajemen Produk**: Bagi pemilik toko, ada panel admin untuk mengelola produk, inventaris, dan melihat statistik penjualan.
+---
 
-## Prasyarat
+## ✨ Fitur Utama
 
-Sebelum memulai, pastikan Anda telah menginstal [Composer](https://getcomposer.org/download/) dan [PHP](https://www.php.net/manual/en/install.php) pada sistem Anda.
+### Pengguna (Customer)
 
-## Langkah-langkah Instalasi
+* 🔍 Melihat katalog produk & detail produk
+* 🛒 Keranjang belanja (add / update / remove)
+* 💳 Checkout & pilihan metode pembayaran
+* 📦 Riwayat & pelacakan pesanan
+* 👤 Registrasi & login akun
 
-1. **Clone Repository:**
+### Admin
 
-    ```bash
-    git clone https://github.com/your-username/nama-proyek.git
-    ```
+* 📊 Dashboard statistik penjualan
+* 📦 Manajemen produk (CRUD + gambar)
+* 🗂️ Manajemen kategori
+* 🧾 Manajemen pesanan & status order
+* 👥 Manajemen user
 
-2. **Masuk ke Direktori Proyek:**
+---
 
-    ```bash
-    cd nama-proyek
-    ```
+## 🧱 Tech Stack
 
-3. **Install Dependensi menggunakan Composer:**
+| Layer           | Teknologi                     |
+| --------------- | ----------------------------- |
+| Backend         | Laravel 10                    |
+| Frontend        | Blade + Bootstrap / Tailwind  |
+| Database        | MySQL / MariaDB               |
+| Auth            | Laravel Auth                  |
+| Package Manager | Composer & NPM                |
+| Storage         | Laravel Storage (public disk) |
 
-    ```bash
-    composer install
-    ```
+---
 
-4. **Salin Berkas Env dan Konfigurasikan:**
+## 📂 Struktur Folder Penting
 
-    ```bash
-    cp .env.example .env
-    ```
+```
+app/
+ ├── Http/Controllers
+ ├── Models
+resources/
+ ├── views
+ ├── css
+ ├── js
+database/
+ ├── migrations
+ ├── seeders
+routes/
+ ├── web.php
+public/
+storage/
+```
 
-    Buka `.env` dan sesuaikan pengaturan database dan konfigurasi lainnya sesuai kebutuhan.
+---
 
-5. **Generate Kunci Aplikasi:**
+## ⚙️ Instalasi
 
-    ```bash
-    php artisan key:generate
-    ```
+### 1. Clone Repository
 
-6. **Jalankan Migrasi Database:**
+```bash
+git clone https://github.com/username/repository-name.git
+cd repository-name
+```
 
-    ```bash
-    php artisan migrate
-    ```
+### 2. Install Dependency
 
-7. **Jalankan Server Pembangunan:**
+```bash
+composer install
+npm install
+```
 
-    ```bash
-    php artisan serve
-    ```
+### 3. Setup Environment
 
-    Aplikasi akan dapat diakses di `http://localhost:8000`.
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Penggunaan
+### 4. Konfigurasi Database (.env)
 
-Sesuaikan aplikasi ini sesuai kebutuhan proyek Anda. Tambahkan rute, kontroler, model, dan tampilan sesuai kebutuhan.
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nzhub
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Kontribusi
+### 5. Migrasi & Seeder
 
-Jika Anda menemui masalah atau memiliki saran perbaikan, harap buka masalah atau ajukan permintaan tarik.
+```bash
+php artisan migrate --seed
+```
 
-Selamat mengoding!
+### 6. Storage Link
 
+```bash
+php artisan storage:link
+```
+
+### 7. Jalankan Server
+
+```bash
+php artisan serve
+npm run dev
+```
+
+Buka di browser:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 🔐 Akun Default (Seeder)
+
+| Role  | Email                                       | Password |
+| ----- | ------------------------------------------- | -------- |
+| Admin | [admin@nzhub.test](mailto:admin@nzhub.test) | password |
+| User  | [user@nzhub.test](mailto:user@nzhub.test)   | password |
+
+---
+
+## 💳 Alur Checkout (Flow)
+
+1. User pilih produk
+2. Tambah ke cart
+3. Checkout
+4. Pilih metode pembayaran
+5. Admin verifikasi
+6. Status → diproses → dikirim → selesai
+
+---
+
+## 🧪 Testing (Opsional)
+
+```bash
+php artisan test
+```
+
+---
+
+## 🚀 Deployment (Shared Hosting / VPS)
+
+Build assets:
+
+```bash
+npm run build
+```
+
+Cache config:
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+Pastikan folder berikut writable:
+
+```
+storage/
+bootstrap/cache
+```
+
+---
+
+## 🛠️ Pengembangan Selanjutnya (Ideas)
+
+* Integrasi payment gateway (Midtrans / Xendit)
+* Wishlist
+* Review & rating produk
+* Coupon / voucher diskon
+* REST API / mobile app support
+* Role & permission (RBAC)
+
+---
+
+## 🤝 Kontribusi
+
+Pull request sangat diterima. Untuk perubahan besar, silakan buka issue terlebih dahulu untuk diskusi.
+
+---
+
+## 📄 Lisensi
+
+Open‑source untuk pembelajaran.
